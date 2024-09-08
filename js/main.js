@@ -46,22 +46,72 @@ function displayTexFile(fileName, comments) {
     container.appendChild(fileBox);
 }
 
-// Function to display the abstract and compressed source links in a smaller font
+
+// Function to display the abstract and compressed source links
 function addHeaderText(arxivId, arxivLink) {
     const extractedLinksContainer = document.getElementById('extractedLinks');
     extractedLinksContainer.innerHTML = ''; // Clear previous results
 
+    // Create a paragraph to contain the icon and the text
+    const paragraph = document.createElement('p');
+
     // Create a single line with both the abstract and compressed source links
-    const infoText = document.createElement('p');
-    infoText.style.fontSize = '0.875em'; // Smaller font size
+    const infoText = document.createElement('span');
 
     const absLink = `<a href="https://arxiv.org/abs/${arxivId}" target="_blank">abs/${arxivId}</a>`;
     const sourceLink = `<a href="${arxivLink}" target="_blank">compressed source</a>`;
 
+    // Add the Share icon (using assets/share.svg)
+    const shareIcon = document.createElement('img');
+    shareIcon.src = 'assets/share.svg';
+    shareIcon.alt = 'Share';
+    shareIcon.classList.add('share-icon');
+
+    // Get the current URL
+    const currentUrl = window.location.href;
+
+    // Set the hover title to show "Copy the URL {current_url} to clipboard"
+    shareIcon.title = `Copy the URL ${currentUrl} to clipboard`;
+
+    // Dynamically adjust the share icon's size based on the font size of the "E"
+    document.fonts.ready.then(() => {
+        // Append the icon and text temporarily to calculate size
+        paragraph.appendChild(shareIcon);
+        paragraph.appendChild(infoText);
+
+        // Measure the height of the "E" of the Extracted comments text
+        const fontSize = window.getComputedStyle(infoText).fontSize;
+        const textHeight = parseFloat(fontSize); // Get the height in pixels
+
+        // Set the icon's height and width to match the text height
+        shareIcon.style.height = `${textHeight}px`;
+        shareIcon.style.width = `${textHeight}px`; // Keep aspect ratio
+    });
+
+    // Add click event to copy the URL
+    shareIcon.addEventListener('click', () => {
+        if (document.hasFocus()) { // Ensure the document is focused
+            copyToClipboard(currentUrl);
+        } else {
+            alert('Please ensure the window is focused to copy the URL.');
+        }
+    });
+
     infoText.innerHTML = `Extracted comments from ${absLink} (${sourceLink}):`;
 
-    extractedLinksContainer.appendChild(infoText);
+    extractedLinksContainer.appendChild(paragraph);
 }
+
+
+// Function to copy text to the clipboard
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('URL copied to clipboard!');
+    }).catch(err => {
+        console.error('Error copying text: ', err);
+    });
+}
+
 
 // Function to parse .tar archive
 function parseTar(tarData) {
