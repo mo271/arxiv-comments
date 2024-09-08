@@ -59,7 +59,7 @@ function addHeaderText(arxivId, arxivLink) {
     const infoText = document.createElement('span');
 
     const absLink = `<a href="https://arxiv.org/abs/${arxivId}" target="_blank">abs/${arxivId}</a>`;
-    const sourceLink = `<a href="${arxivLink}" target="_blank">compressed source</a>`;
+    const sourceLink = `<a href="${arxivLink}" target="_blank">compressed&nbsp;source</a>`;
 
     // Add the Share icon (using assets/share.svg)
     const shareIcon = document.createElement('img');
