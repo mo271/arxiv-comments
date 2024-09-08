@@ -325,3 +325,64 @@ window.onload = function () {
         fetchPaper(arxivId);
     }
 };
+// Load the JSON file and store the data
+let monthlySubmissions = {};
+
+// Fetch the JSON file with monthly submissions
+fetch('assets/monthly_submissions.json')
+    .then(response => response.json())
+    .then(data => {
+        monthlySubmissions = data;
+    })
+    .catch(error => {
+        console.error('Error loading monthly submissions:', error);
+    });
+
+// Add "I'm Feeling Lucky" functionality
+document.getElementById('feelingLucky').addEventListener('click', () => {
+    const luckyId = generateRandomArxivId();
+    document.getElementById('arxivLink').value = luckyId;
+
+    // Trigger the comments fetch
+    document.getElementById('fetchComments').click();
+});
+
+// Function to generate a random arXiv ID, ensuring uniform probability
+function generateRandomArxivId() {
+    // Step 1: Calculate the total number of submissions
+    let totalSubmissions = 0;
+    const cumulativeSubmissions = [];
+
+    for (let yymm in monthlySubmissions) {
+        totalSubmissions += monthlySubmissions[yymm];
+        cumulativeSubmissions.push({ yymm: yymm, total: totalSubmissions });
+    }
+
+    // Step 2: Pick a random submission index (uniformly across all submissions)
+    const randomSubmissionIndex = Math.floor(Math.random() * totalSubmissions) + 1;
+
+    // Step 3: Find the corresponding month (yymm) and the submission number within that month
+    let selectedYymm = '';
+    let submissionNumber = 0;
+
+    for (let i = 0; i < cumulativeSubmissions.length; i++) {
+        if (randomSubmissionIndex <= cumulativeSubmissions[i].total) {
+            selectedYymm = cumulativeSubmissions[i].yymm;
+            const previousTotal = i > 0 ? cumulativeSubmissions[i - 1].total : 0;
+            submissionNumber = randomSubmissionIndex - previousTotal;
+            break;
+        }
+    }
+
+    // Step 4: Format the arXiv ID
+    let randomId;
+    if (parseInt(selectedYymm) < 1501) {
+        // Pre-2015 arXiv IDs are 4 digits
+        randomId = `${selectedYymm}.${submissionNumber.toString().padStart(4, '0')}`;
+    } else {
+        // Post-2015 arXiv IDs have a 5-digit identifier after the period
+        randomId = `${selectedYymm}.${submissionNumber.toString().padStart(5, '0')}`;
+    }
+
+    return randomId;
+}
