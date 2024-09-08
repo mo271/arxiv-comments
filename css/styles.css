@@ -177,3 +177,21 @@ h3 {
 .share-icon:hover {
     filter: brightness(1.2); /* Slightly brighten the icon on hover */
 }
+
+.github-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: inline-block;
+}
+
+.github-icon img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7; /* Make it subtle */
+    transition: opacity 0.3s; /* Smooth transition */
+}
+
+.github-icon img:hover {
+    opacity: 1; /* Full opacity on hover */
+}
