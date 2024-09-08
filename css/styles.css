@@ -148,3 +148,23 @@ h3 {
     margin-left: -0.36em;
     margin-right: -0.15em;
 }
+
+#loadingSpinner {
+    display: block; /* Inline to appear next to the text */
+    border: 4px solid rgba(0, 0, 0, 0.1); /* Light gray border */
+    border-left-color: #3e73c3; /* Blue spinner color */
+    border-radius: 50%; /* Makes it a circle */
+    width: 40px; /* Adjust size for inline use */
+    height: 40px; /* Adjust size for inline use */
+    animation: spin 1s linear infinite; /* Infinite spinning animation */
+    margin: 20px auto; /* Center the spinner */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg); /* Start position */
+    }
+    100% {
+        transform: rotate(360deg); /* End position */
+    }
+}

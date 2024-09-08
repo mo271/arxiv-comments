@@ -1,10 +1,10 @@
 // Function to clean and extract arXiv ID from input
 function cleanArxivId(input) {
-    input = input.trim(); // Remove leading/trailing whitespaces
+    input = input.trim();
 
     // Case 1: If the input starts with "arXiv:", strip it
     if (input.toLowerCase().startsWith('arxiv:')) {
-        input = input.slice(6).trim(); // Remove "arXiv:" and trim
+        input = input.slice(6).trim();
     }
 
     // Case 2: If it's a full URL like "https://arxiv.org/abs/2312.08472" or "https://arxiv.org/pdf/2312.08472"
@@ -113,10 +113,26 @@ function getOriginalGzipFileName(buffer) {
     }
     return null;
 }
+function showLoading(arxivId) {
+    const container = document.getElementById('commentsContainer');
+
+    // Set the loading message with spinner
+    container.innerHTML = `
+        Fetching article ${arxivId} and extracting comments...
+        <div id="loadingSpinner"></div>
+    `;
+
+    // Clear previous extracted links
+    const extractedLinksContainer = document.getElementById('extractedLinks');
+    extractedLinksContainer.innerHTML = '';
+}
 // Fetch the file from the arXiv link
 async function fetchPaper(arxivId) {
     const arxivLink = `https://arxiv.org/e-print/${arxivId}`;
+    const fetchButton = document.getElementById('fetchComments');
+    fetchButton.disabled = true;
     try {
+        showLoading(arxivId);
         console.log(`Fetching paper: ${arxivLink}`);
         const response = await fetch(arxivLink);
 
@@ -186,7 +202,7 @@ async function fetchPaper(arxivId) {
             }
         } else if (contentType.includes('application/zip')) {
             console.log('Detected zip file');
-            const zipData = fflate.unzipSync(new Uint8Array(arrayBuffer)); // Decompress the zip
+            const zipData = fflate.unzipSync(new Uint8Array(arrayBuffer));
 
             // Iterate through the .zip files and display each .tex file
             for (let fileName in zipData) {
@@ -214,8 +230,11 @@ async function fetchPaper(arxivId) {
             : error.message;
 
         document.getElementById('commentsContainer').innerText = errorMessage;
+    } finally {
+        fetchButton.disabled = false;
     }
 }
+
 // Get query parameter value by key
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
