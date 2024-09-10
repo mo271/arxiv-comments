@@ -26,40 +26,6 @@ p {
     margin: 0 20px 20px 20px;
 }
 
-/* Dark Theme */
-@media (prefers-color-scheme: dark) {
-  html,
-  body {
-    background-color: #121212;
-    color: #ffffff;
-  }
-
-  /* Add other necessary changes for dark mode */
-  input[type="text"] {
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #555;
-  }
-
-  button {
-    background-color: #444;
-  }
-
-  button:hover {
-    background-color: #555;
-  }
-
-  #commentsContainer {
-    background-color: #222 !important;
-    border: 1px solid #444 !important;
-  }
-
-  #commentsContainer pre {
-    background-color: #333;
-    border: 1px solid #444;
-  }
-}
-
 /* Container for the input and button, aligned horizontally */
 #inputContainer {
     display: flex;
@@ -228,4 +194,42 @@ h3 {
 
 .github-icon img:hover {
     opacity: 1; /* Full opacity on hover */
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  /* Add other necessary changes for dark mode */
+  input[type="text"] {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+  }
+
+  button {
+    background-color: #444;
+  }
+
+  button:hover {
+    background-color: #555;
+  }
+
+  #commentsContainer {
+    background-color: #222;
+    border: 1px solid #444;
+  }
+
+  #commentsContainer pre {
+    background-color: #333 !important;
+    border: 1px solid #444 !important;
+  }
+
+  h3 {
+    color: #ffffff;
+  }
 }
