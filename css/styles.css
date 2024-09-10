@@ -205,6 +205,23 @@ h3 {
   }
 
   /* Add other necessary changes for dark mode */
+  .share-icon {
+    filter: invert(100%) brightness(100%);
+  }
+
+  .share-icon:hover {
+    filter: invert(43%) hue-rotate(184deg) brightness(96%);
+  }
+
+  #extractedLinks a {
+    color: #1e90ff;
+  }
+
+  #extractedLinks a:hover {
+    color: #00ffff;
+    text-decoration: underline;
+  }
+
   input[type="text"] {
     background-color: #333;
     color: #fff;
@@ -231,5 +248,9 @@ h3 {
 
   h3 {
     color: #ffffff;
+  }
+
+  .github-icon img {
+    filter: invert(100%) brightness(100%);
   }
 }
