@@ -195,3 +195,62 @@ h3 {
 .github-icon img:hover {
     opacity: 1; /* Full opacity on hover */
 }
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  /* Add other necessary changes for dark mode */
+  .share-icon {
+    filter: invert(100%) brightness(100%);
+  }
+
+  .share-icon:hover {
+    filter: invert(43%) hue-rotate(184deg) brightness(96%);
+  }
+
+  #extractedLinks a {
+    color: #1e90ff;
+  }
+
+  #extractedLinks a:hover {
+    color: #00ffff;
+    text-decoration: underline;
+  }
+
+  input[type="text"] {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+  }
+
+  button {
+    background-color: #444;
+  }
+
+  button:hover {
+    background-color: #555;
+  }
+
+  #commentsContainer {
+    background-color: #222;
+    border: 1px solid #444;
+  }
+
+  #commentsContainer pre {
+    background-color: #333 !important;
+    border: 1px solid #444 !important;
+  }
+
+  h3 {
+    color: #ffffff;
+  }
+
+  .github-icon img {
+    filter: invert(100%) brightness(100%);
+  }
+}
