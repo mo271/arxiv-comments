@@ -20,7 +20,22 @@ function cleanArxivId(input) {
 // Function to extract comments from LaTeX source
 function extractComments(latexSource) {
     const lines = latexSource.split('\n');
-    const comments = lines.filter(line => line.trim().startsWith('%'));
+    const comments = [];
+    let documentEnded = false;
+
+    for (const line of lines) {
+        const trimmedLine = line.trim();
+
+        if (trimmedLine.includes('\\end{document}')) {
+            documentEnded = true;
+            continue; // Skip the \end{document} line itself
+        }
+
+        if (documentEnded || trimmedLine.startsWith('%')) {
+            comments.push(line);
+        }
+    }
+
     return comments.join('\n');
 }
 
