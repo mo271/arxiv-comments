@@ -38,3 +38,126 @@ html, body {
 .d2h-file-header {
     background-color: #f7f7f7;
 }
+
+/* Line wrapping toggle styles */
+/* When .diff-wrap-lines is applied to #diffContainer */
+.diff-wrap-lines .d2h-code-line-ctn {
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Dark Mode Overrides for Diff2Html */
+@media (prefers-color-scheme: dark) {
+    /* Main diff container */
+    .d2h-wrapper {
+        color: #d4d4d4;
+    }
+    
+    .d2h-file-wrapper {
+        background-color: #1e1e1e;
+        border-color: #333;
+    }
+
+    .d2h-file-header {
+        background-color: #252526;
+        border-bottom: 1px solid #333;
+        color: #d4d4d4;
+    }
+
+    /* File stats */
+    .d2h-file-stats {
+        color: #d4d4d4;
+    }
+
+    /* Content Area */
+    .d2h-code-line, 
+    .d2h-code-line-ctn {
+        color: #d4d4d4;
+        background: none; /* Reset base background */
+    }
+
+    /* Context (unchanged) lines */
+    .d2h-cntx {
+        color: #d4d4d4;
+        background-color: #1e1e1e;
+    }
+
+    /* Line Numbers Column */
+    .d2h-code-linenumber {
+        background-color: #252526 !important;
+        border-right: 1px solid #333 !important;
+        color: #858585;
+    }
+
+    /* Deletions (Red) */
+    .d2h-del {
+        background-color: rgba(255, 0, 0, 0.2);
+        color: #ffcccc;
+    }
+    .d2h-code-linenumber.d2h-del {
+        background-color: rgba(255, 0, 0, 0.3) !important;
+        border-color: #333 !important;
+        color: #ffcccc;
+    }
+    
+    /* Insertions (Green) */
+    .d2h-ins {
+        background-color: rgba(0, 255, 0, 0.15);
+        color: #ccffcc;
+    }
+    .d2h-code-linenumber.d2h-ins {
+        background-color: rgba(0, 255, 0, 0.25) !important;
+        border-color: #333 !important;
+        color: #ccffcc;
+    }
+
+    /* Info Lines (@@ ...) */
+    .d2h-info {
+        background-color: #2d2d30;
+        color: #858585;
+        border-color: #333;
+    }
+    .d2h-code-linenumber.d2h-info {
+        background-color: #2d2d30 !important;
+        border-color: #333 !important;
+        color: #858585;
+    }
+    
+    /* Changed lines (modified inside line) */
+    .d2h-del .d2h-code-line-ctn del,
+    .d2h-ins .d2h-code-line-ctn ins {
+        background-color: transparent; /* Rely on container bg or set specific highlight */
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    /* Highlight the specific changes darker/lighter */
+    .d2h-del .d2h-code-line-ctn del {
+        background-color: rgba(255, 0, 0, 0.3); 
+    }
+    .d2h-ins .d2h-code-line-ctn ins {
+        background-color: rgba(0, 255, 0, 0.3);
+    }
+    
+    /* Empty placeholders in side-by-side */
+    .d2h-emptyplaceholder,
+    .d2h-code-side-emptyplaceholder {
+        background-color: #1e1e1e !important;
+        border-color: #333 !important;
+    }
+
+    /* Icons */
+    .d2h-icon-wrapper {
+        border-color: #333;
+    }
+
+    /* Source Links Styling */
+    #sourceLinks a {
+        color: #1e90ff;
+        text-decoration: none;
+    }
+    #sourceLinks a:hover {
+        color: #63a4ff;
+        text-decoration: underline;
+    }
+}

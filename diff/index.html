@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>arXiv Diff Tool</title>
+    <!-- Diff2Html CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html@3.4.47/bundles/css/diff2html.min.css" />
+
     <!-- Reusing main styles for consistency -->
     <link rel="stylesheet" href="../css/styles.css"> 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="../assets/favicon.png"/>
-    
-    <!-- Diff2Html CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html@3.4.47/bundles/css/diff2html.min.css" />
 
     <!-- Default favicon for light mode -->
     <link rel="icon" href="../assets/favicon.png" media="(prefers-color-scheme: light)">
@@ -29,6 +29,9 @@
             <input type="number" id="version1" placeholder="old" min="1" style="width: 60px;">
             <span>to</span>
             <input type="number" id="version2" placeholder="new" min="1" style="width: 60px;">
+            <label style="margin-left: 10px; font-size: 0.9em; cursor: pointer;">
+                <input type="checkbox" id="wrapLines" checked> Wrap lines
+            </label>
         </div>
         <button id="compareBtn">Compare</button>
     </div>

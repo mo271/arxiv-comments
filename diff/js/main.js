@@ -150,10 +150,18 @@ async function performDiff() {
     const statusDiv = document.getElementById('statusMessage');
     const sourceLinksDiv = document.getElementById('sourceLinks');
     const diffContainer = document.getElementById('diffContainer');
+    const wrapCheckbox = document.getElementById('wrapLines');
 
     statusDiv.textContent = '';
     sourceLinksDiv.innerHTML = '';
     diffContainer.innerHTML = '';
+
+    // Apply wrapping preference
+    if (wrapCheckbox.checked) {
+        diffContainer.classList.add('diff-wrap-lines');
+    } else {
+        diffContainer.classList.remove('diff-wrap-lines');
+    }
 
     if (!idInput || !v1Input || !v2Input) {
         statusDiv.textContent = 'Please enter ID and both version numbers.';
@@ -255,6 +263,16 @@ async function performDiff() {
 }
 
 document.getElementById('compareBtn').addEventListener('click', performDiff);
+
+// Toggle line wrapping
+document.getElementById('wrapLines').addEventListener('change', function() {
+    const container = document.getElementById('diffContainer');
+    if (this.checked) {
+        container.classList.add('diff-wrap-lines');
+    } else {
+        container.classList.remove('diff-wrap-lines');
+    }
+});
 
 // Handle URL params
 window.onload = function() {
