@@ -148,9 +148,11 @@ async function performDiff() {
     const v1Input = document.getElementById('version1').value;
     const v2Input = document.getElementById('version2').value;
     const statusDiv = document.getElementById('statusMessage');
+    const sourceLinksDiv = document.getElementById('sourceLinks');
     const diffContainer = document.getElementById('diffContainer');
 
     statusDiv.textContent = '';
+    sourceLinksDiv.innerHTML = '';
     diffContainer.innerHTML = '';
 
     if (!idInput || !v1Input || !v2Input) {
@@ -231,6 +233,17 @@ async function performDiff() {
         }
         
         statusDiv.textContent = `Comparison complete: ${arxivId} (v${v1Input} -> v${v2Input})`;
+
+        // Add source links
+        const v1Url = `https://arxiv.org/src/${arxivId}v${v1Input}`;
+        const v2Url = `https://arxiv.org/src/${arxivId}v${v2Input}`;
+        sourceLinksDiv.innerHTML = `
+            <p>
+                Download source: 
+                <a href="${v1Url}" target="_blank">v${v1Input}</a> | 
+                <a href="${v2Url}" target="_blank">v${v2Input}</a>
+            </p>
+        `;
 
     } catch (error) {
         console.error(error);

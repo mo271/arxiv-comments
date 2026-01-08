@@ -29,6 +29,11 @@ html, body {
     min-height: 24px;
 }
 
+#sourceLinks {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
 /* Override some diff2html styles if necessary to match the theme */
 .d2h-file-header {
     background-color: #f7f7f7;
