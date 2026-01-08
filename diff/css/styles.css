@@ -1,0 +1,35 @@
+/* Add specific styles for the diff tool here */
+
+/* Allow scrolling on this page, overriding main.css */
+html, body {
+    overflow: auto;
+    height: auto;
+    min-height: 100vh;
+}
+
+.version-inputs {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 10px;
+}
+
+#diffContainer {
+    margin-top: 30px;
+    width: 95%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#statusMessage {
+    margin-top: 20px;
+    font-weight: bold;
+    min-height: 24px;
+}
+
+/* Override some diff2html styles if necessary to match the theme */
+.d2h-file-header {
+    background-color: #f7f7f7;
+}

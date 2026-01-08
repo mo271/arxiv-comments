@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arXiv Diff Tool</title>
+    <!-- Reusing main styles for consistency -->
+    <link rel="stylesheet" href="../css/styles.css"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="../assets/favicon.png"/>
+    
+    <!-- Diff2Html CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html@3.4.47/bundles/css/diff2html.min.css" />
+
+    <!-- Default favicon for light mode -->
+    <link rel="icon" href="../assets/favicon.png" media="(prefers-color-scheme: light)">
+    <!-- Favicon for dark mode : white for contrast -->
+    <link rel="icon" href="../assets/favicon-white.png" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+
+    <h1>arXiv Diff Tool</h1>
+    <p>Compare two versions of an arXiv paper to see the changes in the <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> source.</p>
+
+    <div id="inputContainer">
+        <input type="text" id="arxivId" placeholder="ID (e.g., 1706.03762)">
+        <div class="version-inputs">
+            <input type="number" id="version1" placeholder="old" min="1" style="width: 60px;">
+            <span>to</span>
+            <input type="number" id="version2" placeholder="new" min="1" style="width: 60px;">
+        </div>
+        <button id="compareBtn">Compare</button>
+    </div>
+
+    <div id="statusMessage"></div>
+    <div id="diffContainer"></div>
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/fflate/umd/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/diff2html@3.4.47/bundles/js/diff2html.min.js"></script>
+    
+    <!-- Main Logic -->
+    <script src="js/main.js"></script>
+    
+    <a href="https://github.com/mo271/arxiv-comments" target="_blank" class="github-icon" title="See source on GitHub">
+        <img src="../assets/github-mark.svg" alt="GitHub" />
+    </a>
+</body>
+</html>

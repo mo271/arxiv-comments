@@ -11,6 +11,15 @@ The tool only uses publicly available data from arXiv.org.
 3. The tool will download the LaTeX source of the paper (if available) and extract any lines that are commented out.
 4. If the source is not available (e.g., the paper is provided only as a PDF), an error message will be displayed.
 
+## arXiv Diff Tool
+
+We also provide a **Diff Tool** to compare the LaTeX source code between two versions of an arXiv paper.
+[Try the arXiv Diff Tool](diff/)
+
+1. Enter the arXiv ID.
+2. Specify the two version numbers (e.g., Old: 1, New: 2).
+3. View a side-by-side diff of the changes.
+
 ## Data Source
 
 This tool solely uses the data available from [arXiv.org](https://arxiv.org/), specifically from papers that have made their LaTeX source available for download. It does **not** access any data outside of what is publicly accessible on arXiv.org.
