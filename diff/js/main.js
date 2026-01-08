@@ -161,7 +161,7 @@ async function performDiff() {
     const arxivId = cleanArxivId(idInput);
     
     // Update URL
-    const newUrl = `${window.location.pathname}?id=${arxivId}&v1=${v1Input}&v2=${v2Input}`;
+    const newUrl = `${window.location.pathname}?id=${arxivId}&old=${v1Input}&new=${v2Input}`;
     history.pushState(null, '', newUrl);
 
     statusDiv.innerHTML = `Fetching versions ${v1Input} and ${v2Input}... <div id="loadingSpinner"></div>`;
@@ -247,8 +247,8 @@ document.getElementById('compareBtn').addEventListener('click', performDiff);
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
-    const v1 = urlParams.get('v1');
-    const v2 = urlParams.get('v2');
+    const v1 = urlParams.get('old');
+    const v2 = urlParams.get('new');
 
     if (id) document.getElementById('arxivId').value = id;
     if (v1) document.getElementById('version1').value = v1;
