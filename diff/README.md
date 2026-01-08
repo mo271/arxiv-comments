@@ -1,5 +1,7 @@
 # arXiv Diff Tool
 
+[Live Tool](https://firsching.ch/arxiv-comments/diff/)
+
 This tool allows users to compare the LaTeX source code of two different versions of an arXiv paper.
 
 ## Usage

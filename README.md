@@ -14,7 +14,7 @@ The tool only uses publicly available data from arXiv.org.
 ## arXiv Diff Tool
 
 We also provide a **Diff Tool** to compare the LaTeX source code between two versions of an arXiv paper.
-[Try the arXiv Diff Tool](diff/)
+[Try the arXiv Diff Tool](https://firsching.ch/arxiv-comments/diff/)
 
 1. Enter the arXiv ID.
 2. Specify the two version numbers (e.g., Old: 1, New: 2).
