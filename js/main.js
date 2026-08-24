@@ -193,7 +193,7 @@ function showLoading(arxivId) {
 }
 // Fetch the file from the arXiv link
 async function fetchPaper(arxivId) {
-    const arxivLink = `https://arxiv.org/e-print/${arxivId}`;
+    const arxivLink = `https://arxiv.org/src/${arxivId}`;
     const fetchButton = document.getElementById('fetchComments');
     fetchButton.disabled = true;
     try {
